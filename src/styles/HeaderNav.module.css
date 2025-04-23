@@ -1,0 +1,203 @@
+.mr_menu_02_toggle {
+    background: transparent;
+    width: 1.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    padding: 0rem;
+    color: #999999;
+    font-size: 1.5rem;
+    transition: all 0.5s ease-in-out;
+    flex-shrink: 0;
+    margin-left: 1.25rem;
+    border: 0;
+  }
+  
+  .mr_menu_02_toggle:focus {
+    outline: none;
+  }
+  
+  .mr_menu_02_toggle:hover {
+    color: #a6a182;
+  }
+  
+  .mr_menu_02 {
+    width: 300px;
+    background: #1d1d1d;
+    padding: 0px;
+    height: 100%;
+    position: fixed;
+    /* left: -300px; */
+    top: 0;
+    z-index: 99999;
+    transition: all 0.5s ease-in-out;
+    overflow: auto;
+  }
+  
+  .mr_menu_02 .mr_menu_02_overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #222222;
+    opacity: 0.7;
+    transition: all 0.5s ease-in-out;
+    z-index: -1;
+  }
+  
+  .mr_menu_02 .mr_menu_02_close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: transparent;
+    padding: 0px;
+    color: #a6a182;
+    font-size: 20px;
+    line-height: 20px;
+    border: 0px solid #a6a182;
+    border-radius: 0px;
+    transition: all 0.5s ease;
+  }
+  
+  .mr_menu_02 .mr_menu_02_close:focus {
+    outline: none;
+  }
+  
+  .mr_menu_02 .logo {
+    position: relative;
+    text-align: center;
+    margin: 80px 0px 50px 0px;
+  }
+  
+  .mr_menu_02 .logo a {
+    display: inline-block;
+  }
+  
+  .mr_menu_02 .logo a img {
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .mr_menu_02 .logo a.dark_logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .mr_menu_02 ul.main_menu {
+    padding: 0px;
+    margin: 0px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .mr_menu_02 ul.main_menu li {
+    border: 0;
+    list-style: none;
+    display: block;
+    position: relative;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5rem;
+    width: 100%;
+  }
+  
+  .mr_menu_02 ul.main_menu li a {
+    list-style: none;
+    position: relative;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.25rem;
+    text-decoration: none;
+    text-align: center;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .mr_menu_02 ul.main_menu li.current > a, .mr_menu_02 ul.main_menu li.active > a, .mr_menu_02 ul.main_menu li:hover > a {
+    color: #a6a182;
+  }
+  
+  .mr_menu_02 ul.main_menu li .submenu_opener {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: block;
+    border: none;
+    height: 50px;
+    width: 40px;
+    line-height: 52px;
+    text-align: center;
+    color: #ffffff;
+    background: rgba(153, 153, 153, 0.1);
+    cursor: pointer;
+    z-index: 5;
+  }
+  
+  .mr_menu_02 ul.main_menu li .submenu_opener i {
+    position: relative;
+    display: block;
+    transition: all 0.5s ease;
+  }
+  
+  .mr_menu_02 ul.main_menu li.nav_open > .submenu_opener i {
+    transform: rotate(90deg);
+    animation: blinking 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes blinking {
+    0% {
+      bottom: -3px;
+    }
+    50% {
+      bottom: 3px;
+    }
+    100% {
+      bottom: -3px;
+    }
+  }
+  
+  .mr_menu_02 ul.main_menu li ul {
+    position: relative;
+    display: none;
+    overflow: hidden;
+    min-width: auto;
+    width: 100%;
+    margin: 0px 0px;
+    padding-left: 10px;
+    z-index: 5;
+    background: #222222;
+    border-radius: 0px;
+  }
+  
+  body.mr_menu_02_active {
+    margin-left: 300px;
+    margin-right: -300px;
+  }
+  
+  body.mr_menu_02_active .mr_menu_02 {
+    left: 0;
+  }
+  
+  body.mr_menu_02_active .mr_menu_02_overlay {
+    width: 100%;
+  }
+  
+  @media screen and (min-width: 992px) {
+    body.mr_menu_02_active {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+    body.mr_menu_02_active .mr_menu_02 {
+      left: -300px;
+    }
+    body.mr_menu_02_active .mr_menu_02_overlay {
+      width: 0%;
+    }
+  }
