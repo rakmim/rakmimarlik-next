@@ -5,7 +5,7 @@ module.exports = {
   sitemapSize: 7000,
   exclude: ["/thanks"],
   outDir: "public",       // sitemap ve robots.txt buraya yazılacak
-  sourceDir: ".next",     // build çıktısı burada
+  sourceDir: "/src",     // build çıktısı burada
   robotsTxtOptions: {
     policies: [
       { userAgent: "*", allow: "/" },
