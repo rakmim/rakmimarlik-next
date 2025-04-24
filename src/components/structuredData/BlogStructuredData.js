@@ -38,3 +38,4 @@ const BlogStructuredData = ({ blog }) => {
     </Head>
   );
 };
+export default BlogStructuredData;
