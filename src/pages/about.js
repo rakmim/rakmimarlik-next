@@ -4,8 +4,20 @@ import TeamContainer from "../container/TeamContainer";
 import TextAbout from "../components/aboutus/TextAbout";
 import SeoHead from "@/components/SeoHead";
 import seoMeta from "@/data/seoMeta";
+import { getTeamFromNotion } from "@/lib/notion";
 
-const AboutUs = () => {
+export async function getStaticProps() {
+  const teamData = await getTeamFromNotion();
+
+  return {
+    props: {
+      teamData,
+    },
+    revalidate: 60,
+  };
+}
+
+const AboutUs = ({ teamData }) => {
 
   return (
     
@@ -13,7 +25,7 @@ const AboutUs = () => {
       <SeoHead {...seoMeta.about} />
       <Mission />
       <TextAbout />
-      <TeamContainer />
+      <TeamContainer teamData={teamData} />
     </main>
   );
 };

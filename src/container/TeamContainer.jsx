@@ -2,9 +2,8 @@ import React from "react";
 import { EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import TeamCard from "../components/aboutus/TeamCard";
-import teamData from "@/data/teams";
 
-const TeamContainer = () => {
+const TeamContainer = ({ teamData = [] }) => {
   return (
     <section>
       <div className="container">

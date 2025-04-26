@@ -19,14 +19,14 @@ const UpperHeader = () => {
 
   return (
     <>
-      {/* ASIDE PANEL */}
+      {/* ASIDE PANEL
       <div className={`aside_info_wrapper ${asideVisible ? 'show' : ''}`}>
         <button className="aside_close" onClick={() => setAsideVisible(false)}>
           Kapat
         </button>
-        <div className="aside_content">Aside içerik buraya</div>
+        <div className="aside_content"></div>
         <AsideInfo />
-      </div>
+      </div> */}
 
       {/* HEADER */}
       <header className={`header ${isSticky ? 'bg-dark sticky' : ''}`}>
@@ -42,12 +42,12 @@ const UpperHeader = () => {
             </div>
 
             <div className="header_right_part d-flex align-items-center">
-              {/* Aside Toggle */}
+              {/* Aside Toggle
               <button onClick={() => setAsideVisible(true)} className="aside_open">
                 <span className="line" />
                 <span className="line" />
                 <span className="line" />
-              </button>
+              </button>*/}
               
               {/* Mobile Menu Toggle (still using Bootstrap if needed) */}
               <button

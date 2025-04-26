@@ -1,22 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import Link from "next/link";
 
 const TeamCard = ({ data }) => {
-  const { slug, name, designation } = data;
-  const imagePath = `/images/team/${slug}.jpg`;
+  const { slug, name, designation, img } = data;
   const fallbackPath = `/images/team/default.jpg`;
+
+  // fallback için state tutuyoruz
+  const [imageSrc, setImageSrc] = useState(img || fallbackPath);
+
+  const handleImageError = () => {
+    setImageSrc(fallbackPath);
+  };
 
   return (
     <div className="team-block">
       <img
-        src={imagePath}
+        src={imageSrc}
         alt={name}
-        onError={(e) => {
-          e.target.onerror = null; // prevent infinite loop if fallback also fails
-          e.target.src = fallbackPath;
-        }}
+        onError={handleImageError}
       />
       <h5 className="text-white">
-        <a href={`/team-detail/${slug}`}>{name}</a>
+        <Link href={`/team-detail/${slug}`}>
+          {name}
+        </Link>
       </h5>
       <h6 className="text-uppercase text-olive">{designation}</h6>
     </div>

@@ -57,16 +57,36 @@ export async function getProjectsFromNotion() {
   }
 
 
-  export async function getSliderProjectsFromNotion(limit = 3) {
-    const projectsDbId = process.env.NOTION_PROJECTS_DATABASE_ID;
-    const rawProjects = await getDatabase(projectsDbId);
-  
-    return rawProjects
-      .slice(0, limit)
-      .map((page) => ({
+export async function getSliderProjectsFromNotion(limit = 3) {
+  const projectsDbId = process.env.NOTION_HOMEPAGE_PROJECTS_DATABASE_ID;
+  const rawProjects = await getDatabase(projectsDbId);
+
+  return rawProjects
+    .slice(0, limit) // ilk `limit` kadar projeyi al
+    .map((page) => {
+      const number = page.properties["Number"]?.rich_text?.[0]?.plain_text || "default";
+      const imagePath = `/images/slider/${number}.jpg`;
+
+      return {
         title: page.properties["Concept"]?.rich_text?.[0]?.plain_text || "Proje",
         slug: slugify(page.properties["Title"]?.title?.[0]?.plain_text || ""),
-        image: `/images/slider/${slugify(page.properties["Title"]?.title?.[0]?.plain_text || "")}.jpg`
-      }));
-  }
-  
+        image: imagePath,
+      };
+    });
+}
+
+export async function getTeamFromNotion() {
+  const teamDbId = process.env.NOTION_TEAM_DATABASE_ID;
+  const rawTeam = await getDatabase(teamDbId);
+
+  console.log("📋 Gelen Team Verisi:", JSON.stringify(rawTeam, null, 2));
+
+  return rawTeam.map((page) => ({
+    id: page.properties["id"]?.title?.[0]?.plain_text || "",
+    name: page.properties["Name"]?.rich_text?.[0]?.plain_text || "İsimsiz",
+    designation: page.properties["Designator"]?.rich_text?.[0]?.plain_text || "Ünvan",
+    slug: page.properties["slug"]?.rich_text?.[0]?.plain_text || "",
+    bio: page.properties["Bio"]?.rich_text?.[0]?.plain_text || "",
+    img: `/images/team/${page.properties["slug"]?.rich_text?.[0]?.plain_text || "default"}.jpg`,
+  }));
+}
