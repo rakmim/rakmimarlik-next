@@ -79,8 +79,6 @@ export async function getTeamFromNotion() {
   const teamDbId = process.env.NOTION_TEAM_DATABASE_ID;
   const rawTeam = await getDatabase(teamDbId);
 
-  console.log("📋 Gelen Team Verisi:", JSON.stringify(rawTeam, null, 2));
-
   return rawTeam.map((page) => ({
     id: page.properties["id"]?.title?.[0]?.plain_text || "",
     name: page.properties["Name"]?.rich_text?.[0]?.plain_text || "İsimsiz",
